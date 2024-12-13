@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<Import Project="..\..\..\common.props" />
+	<Import Project="..\..\..\configureawait.props" />
+	<Import Project="..\..\..\packing.props" />
+
+	<PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.AspNetCore.Components.WebAssembly.Theming" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Syrna.FileManagement.Blazor\Syrna.FileManagement.Blazor.csproj" />
+        <ProjectReference Include="..\Syrna.FileManagement.HttpApi.Client\Syrna.FileManagement.HttpApi.Client.csproj" />
+    </ItemGroup>
+
+</Project>

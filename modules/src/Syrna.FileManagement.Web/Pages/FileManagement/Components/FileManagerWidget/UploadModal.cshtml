@@ -1,0 +1,36 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal;
+@using Syrna.FileManagement.Localization
+@inject IHtmlLocalizer<FileManagementResource> L
+@model Syrna.FileManagement.Web.Pages.FileManagement.Components.FileManagerWidget.UploadModalModel
+@{
+    Layout = null;
+    var allowedFileExtensionsJsCode = Model.Configuration.AllowOnlyConfiguredFileExtensions ? Model.GetAllowedFileExtensionsJsCode() : "null";
+}
+<script>
+    // Todo: MaxByteSizeForEachUpload
+    // Todo: disabled file extensions
+    $("#file").fileinput({
+        showUpload: false,
+        minFileSize: -1,
+        maxFileSize: @Model.Configuration.MaxByteSizeForEachFile,
+        maxFileCount: @Model.Configuration.MaxFileQuantityForEachUpload,
+        allowedFileExtensions: @Html.Raw(allowedFileExtensionsJsCode),
+        previewFileType: 'any',
+        theme: "fa",
+        uploadAsync: false
+    });
+</script>
+<form asp-page="UploadModal">
+    <abp-modal>
+        <abp-modal-header title="@L["UploadFile"].Value"></abp-modal-header>
+        <abp-modal-body>
+            <abp-input asp-for="FileContainerName"/>
+            <abp-input asp-for="OwnerUserId"/>
+            <abp-input asp-for="ParentId"/>
+            <input asp-for="UploadedFiles" type="file" multiple id="file" data-preview-file-type="text"/>
+        </abp-modal-body>
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel | AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

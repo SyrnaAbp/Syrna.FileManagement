@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\..\..\common.props" />
+	<Import Project="..\..\..\configureawait.props" />
+	<Import Project="..\..\..\packing.props" />
+
+	<PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <RootNamespace />
+    </PropertyGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="Syrna.FileManagement.Domain" />
+        <InternalsVisibleTo Include="Syrna.FileManagement.Domain.Tests" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.AutoMapper" />
+        <PackageReference Include="Volo.Abp.BackgroundJobs.Abstractions" />
+        <PackageReference Include="Volo.Abp.Ddd.Domain" />
+        <PackageReference Include="Volo.Abp.Users.Domain" />
+        <ProjectReference Include="..\Syrna.FileManagement.Domain.Shared\Syrna.FileManagement.Domain.Shared.csproj" />
+    </ItemGroup>
+
+</Project>

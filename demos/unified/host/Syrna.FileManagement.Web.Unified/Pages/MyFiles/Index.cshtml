@@ -1,0 +1,55 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Microsoft.Extensions.DependencyInjection
+@using Syrna.FileManagement.Files
+@using Syrna.FileManagement.UnifiedDemo.Localization
+@using Syrna.FileManagement.Web.Pages.FileManagement.Components.FileManagerWidget
+@using Volo.Abp.Users
+@inject IPageLayout PageLayout
+@inject IHtmlLocalizer<UnifiedDemoResource> L
+@inject ICurrentUser CurrentUser
+
+@{
+    PageLayout.Content.Title = L["File"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:File"].Value);
+    PageLayout.Content.MenuItemName = "FileManagementFile";
+
+    const string fileContainerName = "default";
+    var ownerUserId = CurrentUser.GetId();
+    Guid? parentId = null; // the root directory
+
+    var path = HttpContext.Request.Query["path"].FirstOrDefault();
+
+    if (path is not null)
+    {
+        var fileAppService = HttpContext.RequestServices.GetRequiredService<IFileAppService>();
+        var result = await fileAppService.GetByPathAsync(path, fileContainerName, ownerUserId);
+
+        if (!result.Found)
+        {
+            Response.Redirect(Request.Path);
+            return;
+        }
+
+        parentId = result.FileInfo!.Id;
+    }
+
+    // add a file manager widget
+    @await Component.InvokeAsync("FileManager", new
+    {
+        fileContainerName = "default", // specify a container
+        ownerUserId = CurrentUser.GetId(), // can be null if it's a shared container
+        parentId = parentId,
+        policy = new FileManagerPolicyModel // with a custom policy model
+            { CanUploadFile = false, CanMoveFile = false }
+    })
+
+    // you can add more than one file manager widget on the same page
+    @await Component.InvokeAsync("FileManager", new
+    {
+        fileContainerName = "default",
+        ownerUserId = CurrentUser.GetId(),
+        parentId = (Guid?)null
+    })
+}

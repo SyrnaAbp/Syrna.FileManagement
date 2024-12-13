@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>Syrna.FileManagement</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <ProjectReference Include="..\Syrna.FileManagement.EntityFrameworkCore.Tests\Syrna.FileManagement.EntityFrameworkCore.Tests.csproj" />
+  </ItemGroup>
+
+</Project>
