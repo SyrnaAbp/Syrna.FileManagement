@@ -73,41 +73,41 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Solution Items", ".Solutio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demos", "demos", "{65CB7BF0-1EAE-48AA-AB58-A0AC12D997C8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unified", "unified", "{BE013FF3-0659-4E04-AF1B-48655CD7DE1E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MainDemo", "MainDemo", "{BE013FF3-0659-4E04-AF1B-48655CD7DE1E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{04BACE60-0C85-4A0C-9EFB-861C974AA711}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{C1BC5863-E327-48C0-9C15-3D2E2ECEEE3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.UnifiedDemo.Application", "demos\unified\src\Syrna.FileManagement.UnifiedDemo.Application\Syrna.FileManagement.UnifiedDemo.Application.csproj", "{C1200AA6-71C0-4800-982D-ADE5D2ADD9C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.Application", "demos\MainDemo\src\Syrna.FileManagement.MainDemo.Application\Syrna.FileManagement.MainDemo.Application.csproj", "{C1200AA6-71C0-4800-982D-ADE5D2ADD9C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.UnifiedDemo.Application.Contracts", "demos\unified\src\Syrna.FileManagement.UnifiedDemo.Application.Contracts\Syrna.FileManagement.UnifiedDemo.Application.Contracts.csproj", "{4E2DA291-E603-495F-92DC-4B5DBE63FE26}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.Application.Contracts", "demos\MainDemo\src\Syrna.FileManagement.MainDemo.Application.Contracts\Syrna.FileManagement.MainDemo.Application.Contracts.csproj", "{4E2DA291-E603-495F-92DC-4B5DBE63FE26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.UnifiedDemo.Blazor", "demos\unified\src\Syrna.FileManagement.UnifiedDemo.Blazor\Syrna.FileManagement.UnifiedDemo.Blazor.csproj", "{3D2C207F-3A9B-49FE-8B20-6838F8427ED0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.Blazor", "demos\MainDemo\src\Syrna.FileManagement.MainDemo.Blazor\Syrna.FileManagement.MainDemo.Blazor.csproj", "{3D2C207F-3A9B-49FE-8B20-6838F8427ED0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.UnifiedDemo.Blazor.Server", "demos\unified\src\Syrna.FileManagement.UnifiedDemo.Blazor.Server\Syrna.FileManagement.UnifiedDemo.Blazor.Server.csproj", "{7DD3D10F-3391-4B74-A90D-57038D59D1F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.Blazor.Server", "demos\MainDemo\src\Syrna.FileManagement.MainDemo.Blazor.Server\Syrna.FileManagement.MainDemo.Blazor.Server.csproj", "{7DD3D10F-3391-4B74-A90D-57038D59D1F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.UnifiedDemo.Blazor.WebAssembly", "demos\unified\src\Syrna.FileManagement.UnifiedDemo.Blazor.WebAssembly\Syrna.FileManagement.UnifiedDemo.Blazor.WebAssembly.csproj", "{0135161F-8B2C-464B-80F0-DE4EC9F08768}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.Blazor.WebAssembly", "demos\MainDemo\src\Syrna.FileManagement.MainDemo.Blazor.WebAssembly\Syrna.FileManagement.MainDemo.Blazor.WebAssembly.csproj", "{0135161F-8B2C-464B-80F0-DE4EC9F08768}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.UnifiedDemo.DbMigrator", "demos\unified\src\Syrna.FileManagement.UnifiedDemo.DbMigrator\Syrna.FileManagement.UnifiedDemo.DbMigrator.csproj", "{FD4B073E-23AC-4DBC-845C-4276886EDBF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.DbMigrator", "demos\MainDemo\src\Syrna.FileManagement.MainDemo.DbMigrator\Syrna.FileManagement.MainDemo.DbMigrator.csproj", "{FD4B073E-23AC-4DBC-845C-4276886EDBF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.UnifiedDemo.Domain", "demos\unified\src\Syrna.FileManagement.UnifiedDemo.Domain\Syrna.FileManagement.UnifiedDemo.Domain.csproj", "{6774714F-2F92-424E-8232-6632D97062D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.Domain", "demos\MainDemo\src\Syrna.FileManagement.MainDemo.Domain\Syrna.FileManagement.MainDemo.Domain.csproj", "{6774714F-2F92-424E-8232-6632D97062D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.UnifiedDemo.Domain.Shared", "demos\unified\src\Syrna.FileManagement.UnifiedDemo.Domain.Shared\Syrna.FileManagement.UnifiedDemo.Domain.Shared.csproj", "{D8AC6C1A-91D8-4B6D-BDE5-60A4067046B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.Domain.Shared", "demos\MainDemo\src\Syrna.FileManagement.MainDemo.Domain.Shared\Syrna.FileManagement.MainDemo.Domain.Shared.csproj", "{D8AC6C1A-91D8-4B6D-BDE5-60A4067046B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.UnifiedDemo.SqlServer.EntityFrameworkCore", "demos\unified\src\Syrna.FileManagement.UnifiedDemo.SqlServer.EntityFrameworkCore\Syrna.FileManagement.UnifiedDemo.SqlServer.EntityFrameworkCore.csproj", "{184927A0-252B-4213-91A3-44166914CCB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.SqlServer.EntityFrameworkCore", "demos\MainDemo\src\Syrna.FileManagement.MainDemo.SqlServer.EntityFrameworkCore\Syrna.FileManagement.MainDemo.SqlServer.EntityFrameworkCore.csproj", "{184927A0-252B-4213-91A3-44166914CCB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.UnifiedDemo.EntityFrameworkCore", "demos\unified\src\Syrna.FileManagement.UnifiedDemo.EntityFrameworkCore\Syrna.FileManagement.UnifiedDemo.EntityFrameworkCore.csproj", "{A0E31273-65FE-418A-8E76-BFD45EDD0608}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.EntityFrameworkCore", "demos\MainDemo\src\Syrna.FileManagement.MainDemo.EntityFrameworkCore\Syrna.FileManagement.MainDemo.EntityFrameworkCore.csproj", "{A0E31273-65FE-418A-8E76-BFD45EDD0608}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.UnifiedDemo.HttpApi", "demos\unified\src\Syrna.FileManagement.UnifiedDemo.HttpApi\Syrna.FileManagement.UnifiedDemo.HttpApi.csproj", "{DD4F50F8-BDC7-4024-9AC5-773AFE0B7714}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.HttpApi", "demos\MainDemo\src\Syrna.FileManagement.MainDemo.HttpApi\Syrna.FileManagement.MainDemo.HttpApi.csproj", "{DD4F50F8-BDC7-4024-9AC5-773AFE0B7714}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.UnifiedDemo.HttpApi.Client", "demos\unified\src\Syrna.FileManagement.UnifiedDemo.HttpApi.Client\Syrna.FileManagement.UnifiedDemo.HttpApi.Client.csproj", "{67172250-FD78-412F-AB07-F055493C9589}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.HttpApi.Client", "demos\MainDemo\src\Syrna.FileManagement.MainDemo.HttpApi.Client\Syrna.FileManagement.MainDemo.HttpApi.Client.csproj", "{67172250-FD78-412F-AB07-F055493C9589}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.UnifiedDemo.Web", "demos\unified\src\Syrna.FileManagement.UnifiedDemo.Web\Syrna.FileManagement.UnifiedDemo.Web.csproj", "{0B0D0F9B-D0BB-4257-8B9C-D7974BA962BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.Web", "demos\MainDemo\src\Syrna.FileManagement.MainDemo.Web\Syrna.FileManagement.MainDemo.Web.csproj", "{0B0D0F9B-D0BB-4257-8B9C-D7974BA962BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.UnifiedDemo.Blazor.Server.Host", "demos\unified\host\Syrna.FileManagement.UnifiedDemo.Blazor.Server.Host\Syrna.FileManagement.UnifiedDemo.Blazor.Server.Host.csproj", "{54EE2E6E-1FEC-45BA-B8ED-B43A5AEE42B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.Blazor.Server.Host", "demos\MainDemo\host\Syrna.FileManagement.MainDemo.Blazor.Server.Host\Syrna.FileManagement.MainDemo.Blazor.Server.Host.csproj", "{54EE2E6E-1FEC-45BA-B8ED-B43A5AEE42B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.Web.Unified", "demos\unified\host\Syrna.FileManagement.Web.Unified\Syrna.FileManagement.Web.Unified.csproj", "{D6791A23-B88B-4DAF-8AE9-4C49269F02EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.FileManagement.MainDemo.Web.Host", "demos\MainDemo\host\Syrna.FileManagement.MainDemo.Web.Host\Syrna.FileManagement.MainDemo.Web.Host.csproj", "{D6791A23-B88B-4DAF-8AE9-4C49269F02EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -285,7 +285,7 @@ Global
 		{3D2C207F-3A9B-49FE-8B20-6838F8427ED0} = {04BACE60-0C85-4A0C-9EFB-861C974AA711}
 		{7DD3D10F-3391-4B74-A90D-57038D59D1F4} = {04BACE60-0C85-4A0C-9EFB-861C974AA711}
 		{0135161F-8B2C-464B-80F0-DE4EC9F08768} = {04BACE60-0C85-4A0C-9EFB-861C974AA711}
-		{FD4B073E-23AC-4DBC-845C-4276886EDBF7} = {04BACE60-0C85-4A0C-9EFB-861C974AA711}
+		{FD4B073E-23AC-4DBC-845C-4276886EDBF7} = {C1BC5863-E327-48C0-9C15-3D2E2ECEEE3F}
 		{6774714F-2F92-424E-8232-6632D97062D0} = {04BACE60-0C85-4A0C-9EFB-861C974AA711}
 		{D8AC6C1A-91D8-4B6D-BDE5-60A4067046B2} = {04BACE60-0C85-4A0C-9EFB-861C974AA711}
 		{184927A0-252B-4213-91A3-44166914CCB5} = {04BACE60-0C85-4A0C-9EFB-861C974AA711}
