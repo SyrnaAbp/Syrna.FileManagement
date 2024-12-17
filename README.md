@@ -32,6 +32,21 @@ An abp application module that allows manage blobs.
 
 ## Usage
 
+![File List](docs/images/file_list.png)
+
+![Create Directory](docs/images/create_directory.png)
+
+![Rename Directory](docs/images/rename_directory.png)
+
+![File Upload Error](docs/images/file_upload_error.png)
+
+![File İmage Viewer](docs/images/file_image_viewer.png)
+
+![File Detail](docs/images/file_detail.png)
+
+![File Rename](docs/images/file_rename.png)
+
+![File Move](docs/images/file_move.png)
 
 ## Reference
 
@@ -41,5 +56,12 @@ An abp application module that allows manage blobs.
 
 1. Demo project created for OpenIddict
 2. Demo project extended modules added
+3. Razor pages implemented
+4. Added Image Viewer to blazor UI
+5. Added Text Viewer to blazor UI
+6. Exception improvments 
+7. Localization improvments 
+8. Added Turkish localization
+9. Uploader improments for blazor UI
 
 

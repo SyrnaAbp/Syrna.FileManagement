@@ -37,12 +37,21 @@ using Syrna.FileManagement.UnifiedDemo.Localization;
 using Syrna.FileManagement.UnifiedDemo.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
+using Syrna.FileManagement.Containers;
+using Syrna.FileManagement.Files;
+using Syrna.FileManagement.Options;
+using Volo.Abp.BlobStoring;
+using Volo.Abp.BlobStoring.FileSystem;
+using Volo.Abp.BackgroundJobs;
 
 namespace Syrna.FileManagement.UnifiedDemo.Blazor.Server.Host
 {
     //[DependsOn(typeof(AbpAspNetCoreMvcUiLeptonXLiteThemeModule))]
     [DependsOn(typeof(AbpAspNetCoreMvcUiBasicThemeModule))]
     [DependsOn(typeof(AbpAspNetCoreComponentsServerBasicThemeModule))]
+
+    [DependsOn(typeof(AbpBlobStoringFileSystemModule))]
+    [DependsOn(typeof(AbpBackgroundJobsModule))]
 
     [DependsOn(typeof(AbpAutofacModule))]
     [DependsOn(typeof(AbpSwashbuckleModule))]
@@ -127,7 +136,7 @@ namespace Syrna.FileManagement.UnifiedDemo.Blazor.Server.Host
             var passPhrase = "ddd364f4-15e3-494a-bdbc-2fd930db96bb";
             var file = Path.Combine(hostingEnv.ContentRootPath, fileName);
 
-            if (!File.Exists(file))
+            if (!System.IO.File.Exists(file))
             {
                 throw new FileNotFoundException($"Signing Certificate couldn't found: {file}");
             }
@@ -222,6 +231,47 @@ namespace Syrna.FileManagement.UnifiedDemo.Blazor.Server.Host
             Configure<AbpRouterOptions>(options =>
             {
                 options.AppAssembly = typeof(UnifiedDemoBlazorHostModule).Assembly;
+            });
+
+            Configure<AbpBlobStoringOptions>(options =>
+            {
+                options.Containers.Configure<LocalFileSystemBlobContainer>(container =>
+                {
+                    container.IsMultiTenant = true;
+                    container.UseFileSystem(fileSystem =>
+                    {
+                        // fileSystem.BasePath = "C:\\my-files";
+                        fileSystem.BasePath = Path.Combine(hostingEnvironment.ContentRootPath, "..\\my-files");
+                    });
+                });
+            });
+
+            Configure<FileManagementOptions>(options =>
+            {
+                options.DefaultFileDownloadProviderType = typeof(LocalFileDownloadProvider);
+                options.Containers.Configure<CommonFileContainer>(container =>
+                {
+                    // private container never be used by non-owner users (except user who has the "File.Manage" permission).
+                    container.FileContainerType = FileContainerType.Public;
+                    container.AbpBlobContainerName = BlobContainerNameAttribute.GetContainerName<LocalFileSystemBlobContainer>();
+                    container.AbpBlobDirectorySeparator = "/";
+
+                    container.RetainUnusedBlobs = false;
+                    container.EnableAutoRename = true;
+
+                    container.MaxByteSizeForEachFile = 2 * 1024 * 1024;
+                    container.MaxByteSizeForEachUpload = 10 * 1024 * 1024;
+                    container.MaxFileQuantityForEachUpload = 2;
+
+                    container.AllowOnlyConfiguredFileExtensions = true;
+                    container.FileExtensionsConfiguration.Add(".jpg", true);
+                    container.FileExtensionsConfiguration.Add(".gif", true);
+                    container.FileExtensionsConfiguration.Add(".PNG", true);
+                    // container.FileExtensionsConfiguration.Add(".tar.gz", true);
+                    // container.FileExtensionsConfiguration.Add(".exe", false);
+
+                    container.GetDownloadInfoTimesLimitEachUserPerMinute = 10;
+                });
             });
         }
 

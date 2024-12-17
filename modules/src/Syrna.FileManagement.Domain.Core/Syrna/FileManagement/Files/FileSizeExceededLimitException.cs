@@ -8,6 +8,9 @@ namespace Syrna.FileManagement.Files
             "FileSizeExceededLimit",
             $"The size of the file (name: {fileName}, size: {fileByteSize}) exceeded the limit: {maxByteSize}.")
         {
+            Data.Add("fileName", fileName);
+            Data.Add("fileByteSize", fileByteSize);
+            Data.Add("maxByteSize", maxByteSize);
         }
     }
 }

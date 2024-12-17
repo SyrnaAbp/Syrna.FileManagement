@@ -35,7 +35,7 @@ using Syrna.FileManagement.Menus;
 using Syrna.FileManagement.Options;
 using Volo.Abp.BlobStoring;
 using Volo.Abp.BlobStoring.FileSystem;
-using Volo.Abp.Authorization;
+using Volo.Abp.BackgroundJobs;
 
 namespace Syrna.FileManagement
 {
@@ -44,7 +44,9 @@ namespace Syrna.FileManagement
     [DependsOn(typeof(AbpAutofacModule))]
     [DependsOn(typeof(AbpAspNetCoreSerilogModule))]
     [DependsOn(typeof(AbpSwashbuckleModule))]
+
     [DependsOn(typeof(AbpBlobStoringFileSystemModule))]
+    [DependsOn(typeof(AbpBackgroundJobsModule))]
 
     [DependsOn(typeof(UnifiedDemoHttpApiModule))]
     [DependsOn(typeof(UnifiedDemoEntityFrameworkCoreModule))]
@@ -114,7 +116,7 @@ namespace Syrna.FileManagement
                     container.UseFileSystem(fileSystem =>
                     {
                         // fileSystem.BasePath = "C:\\my-files";
-                        fileSystem.BasePath = Path.Combine(hostingEnvironment.ContentRootPath, "my-files");
+                        fileSystem.BasePath = Path.Combine(hostingEnvironment.ContentRootPath, "..\\my-files");
                     });
                 });
             });
@@ -271,99 +273,5 @@ namespace Syrna.FileManagement
             app.UseAbpSerilogEnrichers();
             app.UseConfiguredEndpoints();
         }
-
-        //public override void ConfigureServices(ServiceConfigurationContext context)
-        //{
-        //    var hostingEnvironment = context.Services.GetHostingEnvironment();
-        //    var configuration = context.Services.GetConfiguration();
-
-        //    PreConfigure<AbpAspNetCoreMvcOptions>(options =>
-        //    {
-        //        options
-        //            .ConventionalControllers
-        //            .Create(typeof(FileManagementApplicationModule).Assembly, conventionalControllerSetting =>
-        //            {
-        //                conventionalControllerSetting.ApplicationServiceTypes =
-        //                    ApplicationServiceTypes.IntegrationServices;
-        //            });
-        //    });
-
-        //    Configure<AbpDbContextOptions>(options =>
-        //    {
-        //        options.UseSqlServer();
-        //    });
-
-        //    if (hostingEnvironment.IsDevelopment())
-        //    {
-        //        Configure<AbpVirtualFileSystemOptions>(options =>
-        //        {
-        //            options.FileSets.ReplaceEmbeddedByPhysical<UnifiedDemoDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}Syrna.FileManagement.UnifiedDemo.Domain.Shared", Path.DirectorySeparatorChar)));
-        //            options.FileSets.ReplaceEmbeddedByPhysical<UnifiedDemoDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}Syrna.FileManagement.UnifiedDemo.Domain", Path.DirectorySeparatorChar)));
-        //            options.FileSets.ReplaceEmbeddedByPhysical<UnifiedDemoApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}Syrna.FileManagement.UnifiedDemo.Application.Contracts", Path.DirectorySeparatorChar)));
-        //            options.FileSets.ReplaceEmbeddedByPhysical<UnifiedDemoApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}Syrna.FileManagement.UnifiedDemo.Application", Path.DirectorySeparatorChar)));
-        //            options.FileSets.ReplaceEmbeddedByPhysical<UnifiedDemoWebModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}Syrna.FileManagement.UnifiedDemo.Web", Path.DirectorySeparatorChar)));
-        //        });
-        //    }
-
-        //    context.Services.AddSwaggerGen(
-        //        options =>
-        //        {
-        //            options.SwaggerDoc("v1", new OpenApiInfo { Title = "FileManagement API", Version = "v1" });
-        //            options.DocInclusionPredicate((docName, description) => true);
-        //            options.CustomSchemaIds(type => type.FullName);
-        //        });
-
-        //    Configure<AbpMultiTenancyOptions>(options =>
-        //    {
-        //        options.IsEnabled = MultiTenancyConsts.IsEnabled;
-        //    });
-
-        //    ConfigureConventionalControllers();
-        //}
-
-        //public override void OnApplicationInitialization(ApplicationInitializationContext context)
-        //{
-        //    var app = context.GetApplicationBuilder();
-
-        //    if (context.GetEnvironment().IsDevelopment())
-        //    {
-        //        app.UseDeveloperExceptionPage();
-        //    }
-        //    else
-        //    {
-        //        app.UseErrorPage();
-        //        app.UseHsts();
-        //    }
-
-        //    app.UseHttpsRedirection();
-        //    app.UseStaticFiles();
-        //    app.UseRouting();
-        //    //app.UseIdentityServer();
-        //    app.UseAbpOpenIddictValidation();
-        //    app.UseAuthentication();
-        //    app.UseAuthorization();
-        //    if (MultiTenancyConsts.IsEnabled)
-        //    {
-        //        app.UseMultiTenancy();
-        //    }
-
-        //    app.UseSwagger();
-        //    app.UseSwaggerUI(options =>
-        //    {
-        //        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Support APP API");
-        //    });
-
-        //    app.UseAbpRequestLocalization();
-        //    app.UseAuditing();
-        //    app.UseAbpSerilogEnrichers();
-        //    app.UseConfiguredEndpoints();
-        //}
-
-        //private void ConfigureConventionalControllers()
-        //{
-        //    PreConfigure<AbpAspNetCoreMvcOptions>(options =>
-        //    {
-        //    });
-        //}
     }
 }

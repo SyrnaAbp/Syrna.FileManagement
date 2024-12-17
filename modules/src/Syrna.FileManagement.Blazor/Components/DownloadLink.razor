@@ -1,0 +1,40 @@
+﻿@using Microsoft.JSInterop
+@inject IJSRuntime JS
+
+<a @ref="@ElementRef" href="@Link" download="@FileName" style="position:absolute;top:-20px;left:-20px;">.</a>
+<script>
+    window.interopFunctions = {
+        clickElement : function (element) {
+            element.click();
+        }
+    }
+</script>
+@code {
+
+    [Parameter]
+    public string Link { get; set; }
+
+    [Parameter]
+    public string FileName { get; set; }
+
+    /// <summary>
+    /// Gets or sets the reference to the rendered element.
+    /// </summary>
+    public ElementReference ElementRef { get; set; }
+
+    public async Task Setup(string link, string fileName)
+    {
+        Link = link;
+        FileName = fileName;
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public async Task Click()
+    {
+        // await ElementRef.TriggerClickEvent(JS);
+        // await JS.InvokeVoidAsync("onclick", ElementRef);
+        await JS.InvokeVoidAsync("interopFunctions.clickElement", ElementRef);
+
+        StateHasChanged();
+    }
+}

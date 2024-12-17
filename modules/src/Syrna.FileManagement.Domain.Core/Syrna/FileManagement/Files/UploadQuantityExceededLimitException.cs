@@ -8,6 +8,8 @@ namespace Syrna.FileManagement.Files
             "UploadQuantityExceededLimit",
             $"The quantity of the files ({uploadQuantity}) exceeded the limit: {maxQuantity}.")
         {
+            Data.Add("maxQuantity", maxQuantity);
+            Data.Add("uploadQuantity", uploadQuantity);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Syrna.FileManagement.Blazor
 
             Configure<AbpAutoMapperOptions>(options =>
             {
-                options.AddProfile<FileManagementBlazorAutoMapperProfile>(validate: true);
+                options.AddProfile<FileManagementBlazorAutoMapperProfile>(validate: false);
             });
 
             Configure<AbpNavigationOptions>(options =>
