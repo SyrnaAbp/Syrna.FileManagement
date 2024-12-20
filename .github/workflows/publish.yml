@@ -57,6 +57,7 @@ jobs:
           rm -f *.HttpApi.Client.ConsoleTestApp.*
           rm -f *.Tests.*
           rm -f *.TestBase.*
+          rm -f *.MainDemo.*
           ls
 
       - name: dotnet nuget push to GitHub
@@ -64,8 +65,8 @@ jobs:
         with:
           nupkg-path:  '${{ github.workspace }}/nugetPackages/*.nupkg'
           repo-owner:  'SyrnaAbp'
-          gh-user:  'SyrnaAbp'
-          token:  ${{ secrets.GITHUB_TOKEN }}
+          gh-user:  'dolunay'
+          token:  ${{ secrets.NUGET_PACKAGE_TOKEN }}
 
       - name: dotnet nuget push to NuGet
         run: dotnet nuget push ${{ github.workspace }}/nugetPackages/*.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate
@@ -76,11 +77,11 @@ jobs:
         with:
           tag: ${{ steps.getVersion.outputs.first_match }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.NUGET_PACKAGE_TOKEN }}
 
       - name: add git tag
         if: ${{ steps.checkTag.outputs.exists == 'false' }}
         uses: tvdias/github-tagger@v0.0.1
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.NUGET_PACKAGE_TOKEN }}
           tag: ${{ steps.getVersion.outputs.first_match }}
