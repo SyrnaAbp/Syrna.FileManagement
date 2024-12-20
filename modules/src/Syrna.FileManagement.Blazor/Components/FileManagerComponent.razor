@@ -1,0 +1,48 @@
+﻿@using Syrna.FileManagement.Blazor.Components
+@using Syrna.FileManagement.Blazor.ViewModels
+@using Syrna.FileManagement.Files
+@using Syrna.FileManagement.Files.Dtos
+@using Syrna.FileManagement.Localization
+@using Volo.Abp.BlazoriseUI.Components
+@using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
+@inject AbpBlazorMessageLocalizerHelper<FileManagementResource> LH
+
+@inherits AbpReadOnlyPageBase<IFileAppService, FileInfoDto, FileInfoDto, Guid, GetFileListInput,FileInfoViewModel>
+<Card>
+    <CardHeader>
+        <PageHeader Title="@L["Menu:FileManagement"]"
+                    BreadcrumbItems="@BreadcrumbItems"
+                    Toolbar="@Toolbar">
+        </PageHeader>
+    </CardHeader>
+    <CardBody>
+        <FmExtensibleDataGrid TItem="FileInfoViewModel"
+                              Data="@Entities"
+                              ReadData="@OnDataGridReadAsync"
+                              TotalItems="@TotalCount"
+                              ShowPager="true"
+                              PageSize="@PageSize"
+                              CurrentPage="@CurrentPage"
+                              Columns="@FileManagerComponentTableColumns">
+        </FmExtensibleDataGrid>
+    </CardBody>
+</Card>
+<TextFileContentModal @ref="TextFileContentModalRef" />
+<ImageFileContentModal @ref="ImageFileContentModalRef" />
+@if (HasCreateDirectoryPermission)
+{
+    <DetailsModal @ref="DetailsModalRef" />
+}@if (HasCreateDirectoryPermission || HasCreateDirectoryPermission)
+{
+    <CreateDirectoryModal @ref="CreateDirectoryModalRef" Saved="AfterSavedOrUpdated" />
+}@if (HasMoveFilePermission || HasMoveDirectoryPermission)
+{
+    <MoveModal @ref="MoveModalRef" Saved="AfterSavedOrUpdated" />
+}@if (HasRenameFilePermission || HasRenameDirectoryPermission)
+{
+    <RenameModal @ref="RenameModalRef" Saved="AfterSavedOrUpdated" />
+}@if (HasUploadFilePermission)
+{
+    <UploadModal @ref="UploadModalRef" Saved="AfterSavedOrUpdated" />
+}
+<DownloadLink @ref="DownloadLinkRef" Link="#" />

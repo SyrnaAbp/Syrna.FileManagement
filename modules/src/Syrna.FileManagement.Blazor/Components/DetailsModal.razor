@@ -1,0 +1,69 @@
+﻿@using Microsoft.Extensions.Localization
+@using Syrna.FileManagement.Localization
+@using Volo.Abp.BlazoriseUI.Components
+@using Volo.Abp.BlazoriseUI.Components.ObjectExtending
+@inject AbpBlazorMessageLocalizerHelper<FileManagementResource> LH
+@inherits Volo.Abp.AspNetCore.Components.AbpComponentBase
+<Modal @ref="DetailsModalRef" Closing="@ClosingDetailsModal">
+    <ModalContent Centered="true">
+        <Form>
+            <ModalHeader>
+                <ModalTitle>@L["File"]</ModalTitle>
+                <CloseButton Clicked="CloseDetailsModalAsync" />
+            </ModalHeader>
+            <ModalBody>
+                <Field>
+                    <FieldLabel>@L["FileId"]</FieldLabel>
+                    <TextEdit @bind-Text="DetailsEntity.Id" Disabled="true" />
+                </Field>
+                <Field>
+                    @if (DetailsEntity.FileType == Files.FileType.RegularFile)
+                    {
+                        <Icon Name="IconName.File" />
+                    }
+                    @if (DetailsEntity.FileType == Files.FileType.Directory)
+                    {
+                        <Icon Name="IconName.Folder" />
+                    }
+                    <FieldLabel>@L["FileFileName"]</FieldLabel>
+                    <TextEdit @bind-Text="DetailsEntity.FileName" Disabled="true" />
+                </Field>
+                <Field>
+                    <FieldLabel>@L["Location"]</FieldLabel>
+                    <TextEdit @bind-Text="DetailsEntity.Location" Disabled="true" />
+                </Field>
+                <Field>
+                    <FieldLabel>@L["FileMimeType"]</FieldLabel>
+                    <TextEdit @bind-Text="DetailsEntity.MimeType" Disabled="true" />
+                </Field>
+                <Field>
+                    <FieldLabel>@L["FileByteSize"]</FieldLabel>
+                    <TextEdit @bind-Text="DetailsEntity.ByteSize" Disabled="true" />
+                </Field>
+                <Field>
+                    <FieldLabel>@L["FileHash"]</FieldLabel>
+                    <TextEdit @bind-Text="DetailsEntity.Hash" Disabled="true" />
+                </Field>
+                <Field>
+                    <FieldLabel>@L["CreationTime"]</FieldLabel>
+                    <TextEdit @bind-Text="DetailsEntity.Created" Disabled="true" />
+                </Field>
+                <Field>
+                    <FieldLabel>@L["Creator"]</FieldLabel>
+                    <TextEdit @bind-Text="DetailsEntity.Creator" Disabled="true" />
+                </Field>
+                <Field>
+                    <FieldLabel>@L["LastModificationTime"]</FieldLabel>
+                    <TextEdit @bind-Text="DetailsEntity.Modified" Disabled="true" />
+                </Field>
+                <Field>
+                    <FieldLabel>@L["LastModifier"]</FieldLabel>
+                    <TextEdit @bind-Text="DetailsEntity.LastModifier" Disabled="true" />
+                </Field>
+            </ModalBody>
+            <ModalFooter>
+                <Button Color="Color.Default" Clicked="CloseDetailsModalAsync">@L["Cancel"]</Button>
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>

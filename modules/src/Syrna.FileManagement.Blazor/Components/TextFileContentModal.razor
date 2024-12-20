@@ -1,0 +1,19 @@
+﻿@inherits Volo.Abp.AspNetCore.Components.AbpComponentBase
+<Modal @ref="_modal" Closing="@ClosingModal">
+    <ModalContent Size="ModalSize.Large" Centered="true">
+        <ModalHeader>
+            <ModalTitle>@L["FileContent"].Value</ModalTitle>
+            <CloseButton Clicked="CloseModal" />
+        </ModalHeader>
+        <ModalBody MaxHeight="250">
+            <pre class="language-markup">
+            <code class="language-markup">
+                    @Content
+           </code>
+           </pre>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Primary" Outline Clicked="CloseModal">@L["Cancel"]</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>

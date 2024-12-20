@@ -22,7 +22,7 @@ namespace Syrna.FileManagement.Blazor.Menus
             if (await context.IsGrantedAsync(FileManagementPermissions.File.Default))
             {
                 context.Menu.AddItem(new ApplicationMenuItem(FileManagementMenus.Prefix,
-                    l["Menu:File"], "/FileManagement/Files/File", icon: "fa fa-folder")
+                    l["Menu:FileManagement"], "/FileManagement/Files/File", icon: "fa fa-folder")
                 );
             }
         }

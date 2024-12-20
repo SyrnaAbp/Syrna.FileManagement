@@ -1,8 +1,9 @@
-@page "/FileManagement"
+@page "/FileManagement/Files/File"
 @using Microsoft.Extensions.Localization
+@using Syrna.FileManagement.Blazor.Components
 @using global::Syrna.FileManagement.Localization
 @inject IStringLocalizer<FileManagementResource> L
-@{
+<FileManagerComponent @ref="FileManagerComponentRef"></FileManagerComponent>
+@code {
+    protected FileManagerComponent FileManagerComponentRef { get; set; }
 }
-<h1>FileManagement</h1>
-<p>@L["SamplePageMessage"]</p>

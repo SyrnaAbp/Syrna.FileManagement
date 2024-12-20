@@ -15,5 +15,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Syrna.FileManagement.Application.Contracts\Syrna.FileManagement.Application.Contracts.csproj" />
+        <ProjectReference Include="..\Syrna.FileManagement.Domain.Core\Syrna.FileManagement.Domain.Core.csproj" />
     </ItemGroup>
 </Project>

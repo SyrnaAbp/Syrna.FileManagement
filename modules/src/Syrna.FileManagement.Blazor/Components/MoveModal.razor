@@ -1,0 +1,45 @@
+﻿@using System.Runtime.CompilerServices
+@using Microsoft.Extensions.Localization
+@using Syrna.FileManagement.Localization
+@using Volo.Abp.BlazoriseUI.Components
+@using Volo.Abp.BlazoriseUI.Components.ObjectExtending
+@inject AbpBlazorMessageLocalizerHelper<FileManagementResource> LH
+@inherits Volo.Abp.AspNetCore.Components.AbpComponentBase
+<Modal @ref="MoveModalRef" Closing="@ClosingMoveModal">
+    <ModalContent Centered="true">
+        <Form>
+            <ModalHeader>
+                <ModalTitle>@L["Move"]</ModalTitle>
+                <CloseButton Clicked="CloseMoveModalAsync" />
+            </ModalHeader>
+            <ModalBody>
+                <Validations @ref="@MoveValidationsRef" Model="@MoveEntity" ValidateOnLoad="false">
+                    <Validation MessageLocalizer="@LH.Localize">
+                        <Field>
+                            <FieldLabel>@L["FileParentId"]</FieldLabel>
+                            <TextEdit @bind-Text="@MoveEntity.NewParentId" Autofocus="true">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </TextEdit>
+                        </Field>
+                    </Validation>
+                    <Validation MessageLocalizer="@LH.Localize">
+                        <Field>
+                            <FieldLabel>@L["FileFileName"]</FieldLabel>
+                            <TextEdit @bind-Text="@MoveEntity.NewFileName" Autofocus="true">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </TextEdit>
+                        </Field>
+                    </Validation>
+                </Validations>
+            </ModalBody>
+            <ModalFooter>
+                <Button Color="Color.Primary" Outline Clicked="CloseMoveModalAsync">@L["Cancel"]</Button>
+                <SubmitButton Clicked="@MoveEntityAsync" />
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>

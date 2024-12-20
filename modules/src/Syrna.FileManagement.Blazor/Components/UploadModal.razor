@@ -1,0 +1,55 @@
+﻿@using System.Runtime.CompilerServices
+@using Microsoft.Extensions.Localization
+@using Syrna.FileManagement.Localization
+@using Volo.Abp.BlazoriseUI.Components
+@using Volo.Abp.BlazoriseUI.Components.ObjectExtending
+@inject AbpBlazorMessageLocalizerHelper<FileManagementResource> LH
+@inherits Volo.Abp.AspNetCore.Components.AbpComponentBase
+<Modal @ref="UploadModalRef" Closing="@UploadingCreateModal">
+    <ModalContent Centered="true">
+        <Form>
+            <ModalHeader>
+                <ModalTitle>@L["UploadFile"]</ModalTitle>
+                <CloseButton Clicked="CloseUploadModalAsync" />
+            </ModalHeader>
+            <ModalBody>
+                <Validations @ref="@UploadValidationsRef" Model="@UploadEntity" ValidateOnLoad="false">
+                    <Field>
+                        <FieldLabel>@L["FileFileName"]</FieldLabel>
+                        <Progress Max="100" Value="@FilePercentValue" />
+                        <DataGrid @ref="DataGridRef" TItem="FileItem" Data="@FileList" TotalItems="@TotalFiles" PageSize="10" Responsive="true">
+                            <LoadingTemplate>
+                                <Row Class="w-100 align-items-center" Style="height: 150px;">
+                                    <Column>
+                                        <RadarSpinner />
+                                    </Column>
+                                </Row>
+                            </LoadingTemplate>
+                            <EmptyTemplate>
+                                <Row Class="w-100 align-items-center" Style="height: 150px;">
+                                    <Column>
+                                        <Heading Size="HeadingSize.Is4" TextAlignment="TextAlignment.Center">No data available</Heading>
+                                    </Column>
+                                </Row>
+                            </EmptyTemplate>
+                            <DataGridColumns>
+                                <DataGridColumn TItem="FileItem" Field="@nameof(FileItem.FileName)" Caption="@L["FileFileName"]" />
+                                <DataGridColumn TItem="FileItem" Field="@nameof(FileItem.ContentType)" Caption="@L["FileMimeType"]" />
+                                <DataGridEntityActionsColumn TItem="FileItem" Caption="@L["Actions"]" Width="48px">
+                                    <DisplayTemplate>
+                                        <Button Type="ButtonType.Button" Clicked="@(() => RemoveFileItem(context.Id))"><Icon Name="IconName.Delete" IconSize="IconSize.Default"></Icon></Button>
+                                    </DisplayTemplate>
+                                </DataGridEntityActionsColumn>
+                            </DataGridColumns>
+                        </DataGrid>
+                        <FileEdit Filter="@AllowedFileExtensions" Changed="@OnChanged" Written="@OnWritten" Progressed="@OnProgressed" Multiple />
+                    </Field>
+                </Validations>
+            </ModalBody>
+            <ModalFooter>
+                <Button Color="Color.Primary" Outline Clicked="CloseUploadModalAsync">@L["Cancel"]</Button>
+                <SubmitButton Clicked="@UploadEntityAsync" />
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>

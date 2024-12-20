@@ -8,6 +8,8 @@ namespace Syrna.FileManagement.Files
             "UploadSizeExceededLimit",
             $"The total size of the files ({uploadByteSize}) exceeded the limit: {maxByteSize}.")
         {
+            Data.Add("maxByteSize",maxByteSize);
+            Data.Add("uploadByteSize", uploadByteSize);
         }
     }
 }

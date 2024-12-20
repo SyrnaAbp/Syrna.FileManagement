@@ -5,12 +5,12 @@
 		<AbpProjectType>module</AbpProjectType>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Authors>Syrna Team</Authors>
-		<Description>An abp application module that allows users to send private messages to each other.</Description>
+		<Description>An abp.io application module that allows users to upload and maintain files.</Description>
 		<PackageReadmeFile>.\README.md</PackageReadmeFile>
 		<PackageIcon>.\logo.png</PackageIcon>
 		<PackageProjectUrl>https://github.com/SyrnaAbp/Syrna.FileManagement</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/SyrnaAbp/Syrna.FileManagement</RepositoryUrl>
-		<PackageTags>An abp application module that allows users to send private messages to each other syrna alpha</PackageTags>
+		<PackageTags>file-upload file-manager abp blob-storage blazor abp-framework syrna.</PackageTags>
 		<Company>Syrna</Company>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>

@@ -23,5 +23,5 @@
     <EmbeddedResource Include="Syrna\FileManagement\Localization\*.json" />
     <Content Remove="Syrna\FileManagement\Localization\*.json" />
   </ItemGroup>
-
+    
 </Project>

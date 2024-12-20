@@ -1,0 +1,30 @@
+﻿@using Microsoft.Extensions.Localization
+@using Syrna.FileManagement.Files
+@using Syrna.FileManagement.Localization
+
+@inject IStringLocalizer<FileManagementResource> L
+
+@if (FileInfo.FileType == FileType.Directory)
+{
+    <Button Block="true"
+            Color="@Color.Default"
+            Clicked="@FolderClickedAsync">
+        <Span TextAlignment="TextAlignment.Start" Class="btn-block">
+            <Icon Name="@IconName.Folder" Class="me-1" />
+            @FileInfo.FileName
+        </Span>
+    </Button>
+}
+@if (FileInfo.FileType == FileType.RegularFile)
+{
+    <Button Block="true"
+            Color="@Color.Default"
+            Clicked="@FileClickedAsync">
+        <Span TextAlignment="TextAlignment.Start" Class="btn-block">
+            <Icon Name="@IconName.File" Class="me-1" />
+            @FileInfo.FileName
+        </Span>
+    </Button>
+}
+<TextFileContentModal @ref="TextFileContentModalRef" />
+<ImageFileContentModal @ref="ImageFileContentModalRef" />
